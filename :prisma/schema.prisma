@@ -1,3 +1,5 @@
+// The Structural Map. Defines the "Airing Object" 
+// Ensures the database enforces the unique identity of every scan.
 // This is your Source of Truth for Data
 datasource db {
   provider = "postgresql"
