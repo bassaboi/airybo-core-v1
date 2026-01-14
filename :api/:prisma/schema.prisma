@@ -1,0 +1,19 @@
+// This is your Source of Truth for Data
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Airing {
+  id               String   @id @default(uuid())
+  idempotency_key  String   @unique  // Rule: Prevent duplicates
+  source           String            // qr, link, manual
+  raw_payload      Json              // Verbatim capture
+  res_state        String   @default("unresolved")
+  created_at       DateTime @default(now())
+  session_id       String   // Used to enforce the 5-item Shelf limit
+}
