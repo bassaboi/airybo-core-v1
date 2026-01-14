@@ -3,7 +3,7 @@
 # File Map
 
 * **package.json**: The Ingredient List (Dependencies).
-* **index.ts**: The Brain (Capture Logic & API Endpoints).
+* **index.ts**: CIP Rule #1: Capture the interest before requiring identity 
 * **prisma/schema.prisma**: The Blueprint (Database Structure).
 
 /api Folder:	The "Back-End Fortress." Contains the server logic, database connection, and API endpoints.
