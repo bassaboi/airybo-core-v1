@@ -1,3 +1,14 @@
+/**
+ * CIP Rule #1: Capture the interest before requiring identity.
+ * Purpose: The Brain. Contains the core Capture Logic. 
+ */
+
+import Fastify from 'fastify';
+import { PrismaClient } from '@prisma/client';
+
+const app = Fastify();
+// ... the rest of your code follows
+
 import Fastify from 'fastify';
 import { PrismaClient } from '@prisma/client';
 
