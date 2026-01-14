@@ -1,6 +1,7 @@
-# Airybo API Fortress
+# Airybo Phase 1: Capture Interest Protocol (CIP)
 
-### File Map
+# File Map
+
 * **package.json**: The Ingredient List (Dependencies).
 * **index.ts**: The Brain (Capture Logic & API Endpoints).
 * **prisma/schema.prisma**: The Blueprint (Database Structure).
@@ -9,7 +10,7 @@
 
 package.json:	 The Ingredient List. Defines the technical stack (Node.js, Fastify, Prisma) and the automation scripts for building the API.
 
-index.ts:  The Brain. Contains the core Capture Logic. It receives incoming scans, assigns idempotency keys, and saves them to the database.
+index.ts:  CIP Rule #1: Capture the interest before requiring identity.         Purpose: The Brain. Contains the core Capture Logic. It receives incoming scans, assigns idempotency keys, and saves them to the database.
 
 prisma/ Folder: 	The Blueprint Room. Holds the database schema definitions.
 
