@@ -1,8 +1,7 @@
 {
   "name": "airybo-api",
   "version": "1.0.0",
-  "description": "The Ingredient List. Defines the technical stack 
-  (Node.js, Fastify, Prisma) and automation scripts.",
+  "description": "The Ingredient List. Defines the technical stack (Node.js, Fastify, Prisma) and automation scripts.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
