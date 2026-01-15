@@ -1,16 +1,20 @@
 {
   "name": "airybo-api",
   "version": "1.0.0",
-  "description": "The Ingredient List. Defines the technical stack (Node.js, Fastify, Prisma) and automation scripts.",
-  "main": "dist/index.js",
+  "description": "Airybo Phase 1 System of Record",
+  "main": "index.ts",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "tsc",
-    "test": "jest"
+    "start": "ts-node index.ts",
+    "build": "npm install && npx prisma generate"
   },
   "dependencies": {
     "fastify": "^4.24.3",
     "@prisma/client": "^5.5.2",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.5.2"
   }
 }
