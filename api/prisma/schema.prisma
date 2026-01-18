@@ -1,21 +1,41 @@
-// The Structural Map. Defines the "Airing Object" 
-// Ensures the database enforces the unique identity of every scan.
-// This is your Source of Truth for Data
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+// AIRYBO PHASE 1: CANONICAL SCHEMA
+// Compliant with CIP Language Canon & PPA Claims
+// Status: LIVE
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model Airing {
-  id               String   @id @default(uuid())
-  idempotency_key  String   @unique  // Rule: Prevent duplicates
-  source           String            // qr, link, manual
-  raw_payload      Json              // Verbatim capture
-  res_state        String   @default("unresolved")
-  created_at       DateTime @default(now())
-  session_id       String   // Used to enforce the 5-item Shelf limit
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
+// CORE PRIMITIVE: The Interest Object (Claim 1)
+// "A system... for capturing transient user interest... using ephemeral interest objects"
+model InterestObject {
+  id          String   @id @default(uuid())
+  reference   String   // The ISBN or ID (Non-resolved)
+  
+  // BOUNDED SURFACE ASSOCIATION (Claim 1, Claim 8)
+  // "Associating the interest object with a bounded interest surface"
+  surfaceId   String   
+  contextType String   // "Shortlist", "AirShelf", "SharedShelf"
+
+  // TEMPORAL CONSTRAINTS (Claim 3)
+  // "Automatically expiring... upon satisfaction of the temporal constraint"
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime // Calculated at capture time (e.g., +12 hours)
+  
+  // STATUS (Active vs Expired)
+  isActive    Boolean  @default(true)
+
+  // EVENT ACKNOWLEDGMENT (Claim 6)
+  // "Event-based acknowledgment indicating later access"
+  openedAt    DateTime? // Null until "Air" is broken (deferred access)
+
+  @@index([expiresAt])
+  @@index([surfaceId])
+}
+
+// Note: No "User" model yet. Phase 1 is "Interest First," not "User First."
